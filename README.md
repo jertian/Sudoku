@@ -1,6 +1,6 @@
 # sudoku
 
-Simple brute force sudoku solver
+Simple brute force sudoku solver written in clojure
 
 
 ## License
