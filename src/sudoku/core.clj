@@ -19,7 +19,6 @@
   [x]
   (= (count x) (count (distinct x))))
 
-
 (defn- get-pos
   [row col]
   (+ (* row 9) col))
@@ -27,7 +26,6 @@
 (defn- get-num
   [grid row col]
   (get grid (get-pos row col)))
-
 
 (defn- next-col 
   [col]
@@ -45,7 +43,6 @@
   [row col]
   (and (= row 9)))
 
-
 (defn- get-col
   [grid row col]
   (let [point (get-pos 0 col)]
@@ -61,8 +58,7 @@
 
 (defn get-cell-start
   [row col]
-  (get-pos (* 3 (math/floor (/ row 3))) (* 3 (math/floor (/ col 3))))
-  )
+  (get-pos (* 3 (math/floor (/ row 3))) (* 3 (math/floor (/ col 3)))))
 
 (defn get-cell
   [grid row col]
@@ -89,14 +85,11 @@
 
 (defn update-grid
   [grid row col]
-  
   (if (last-square? row col)
     (print-grid grid)
-    
     (do
       (if (not (zero? (get-num grid row col)))
         (update-grid grid (next-row row col) (next-col col))
-        
         (loop [next-num 1]
           (when (< next-num 10)
             (if (valid? grid row col next-num)
@@ -104,10 +97,7 @@
                 (update-grid (replace-cell grid row col next-num) (next-row row col) (next-col col))
                 (recur (inc next-num)))
               (do
-                (recur (inc next-num)))))))
-      
-      ))
-  )
+                (recur (inc next-num))))))))))
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -125,11 +115,6 @@
          0 0 0 8 0 0 0 4 6]]
     ;(println (conj (get-row grid 0 0) 4))
     ;(println (valid? grid 0 0 1))
-    (update-grid grid 0 0)
-    
-    )
-  
-  
-  )
+    (update-grid grid 0 0)))
 
 
