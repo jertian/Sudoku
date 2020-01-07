@@ -92,12 +92,9 @@
         (update-grid grid (next-row row col) (next-col col))
         (loop [next-num 1]
           (when (< next-num 10)
-            (if (valid? grid row col next-num)
-              (do
-                (update-grid (replace-cell grid row col next-num) (next-row row col) (next-col col))
-                (recur (inc next-num)))
-              (do
-                (recur (inc next-num))))))))))
+            (when (valid? grid row col next-num)
+              (update-grid (replace-cell grid row col next-num) (next-row row col) (next-col col)))
+            (recur (inc next-num)))))))))
 
 (defn -main
   "I don't do a whole lot ... yet."
